@@ -1,0 +1,43 @@
+{
+  "project_info": {
+    "project_id": "thenpushexample",
+    "project_number": "631642900304",
+    "name": "ThenPushExample"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:631642900304:android:700dd2616f176b0f",
+        "client_id": "android:me.thenpush.example",
+        "client_type": 1,
+        "android_client_info": {
+          "package_name": "me.thenpush.example",
+          "certificate_hash": []
+        }
+      },
+      "oauth_client": [],
+      "api_key": [],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "cloud_messaging_service": {
+          "status": 2,
+          "apns_config": []
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "google_signin_service": {
+          "status": 1
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "client_info": [],
+  "ARTIFACT_VERSION": "1"
+}
