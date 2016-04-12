@@ -5,6 +5,7 @@ import android.content.Context;
 import me.thenpush.rest.Endpoints;
 import me.thenpush.rest.RestApi;
 import me.thenpush.rest.models.Device;
+import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Retrofit;
 
@@ -32,6 +33,7 @@ public class DeviceSender {
 
         String token = "Token: " + context.getString(R.string.thenpushme_api_token);
 
-        endpoints.addDevice(token, projectId, device);
+        Call<Device> call = endpoints.addDevice(token, projectId, device);
+        call.enqueue(callback);
     }
 }

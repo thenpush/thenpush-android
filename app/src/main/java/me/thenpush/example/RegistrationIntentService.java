@@ -31,6 +31,9 @@ import java.io.IOException;
 
 import me.thenpush.DeviceSender;
 import me.thenpush.rest.models.Device;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class RegistrationIntentService extends IntentService {
 
@@ -92,7 +95,18 @@ public class RegistrationIntentService extends IntentService {
         // Add custom implementation, as needed.
         DeviceSender sender = DeviceSender.getInstance(getApplicationContext());
         Device device = new Device(token);
-        sender.send(device, "fc0f72f2-00e2-11e6-ba10-0242ac110005", null);
+        sender.send(device, "fc0f72f2-00e2-11e6-ba10-0242ac110005", new Callback<Device>() {
+            @Override
+            public void onResponse(Call<Device> call, Response<Device> response) {
+                Log.d("example", "Device received: " + response.body());
+            }
+
+            @Override
+            public void onFailure(Call<Device> call, Throwable t) {
+                Log.e("example", "Error registering!");
+                t.printStackTrace();
+            }
+        });
     }
 
     /**

@@ -1,20 +1,23 @@
 package me.thenpush.rest.models;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by pappacena on 12/04/16.
  */
 public class Device {
-    private String registrationId;
+    @SerializedName("request_id")
+    private String requestId;
 
     public Device(String registrationId) {
-        this.registrationId = registrationId;
+        this.requestId = registrationId;
     }
 
-    public String getRegistrationId() {
-        return registrationId;
+    public String getRequestId() {
+        return requestId;
     }
 
-    public void setRegistrationId(String registrationId) {
-        this.registrationId = registrationId;
+    public void setRequestId(String requestId) {
+        this.requestId = requestId;
     }
 }
