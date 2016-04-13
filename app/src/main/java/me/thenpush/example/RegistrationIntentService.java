@@ -92,7 +92,7 @@ public class RegistrationIntentService extends IntentService {
      * @param token The new token.
      */
     private void sendRegistrationToServer(String token) {
-        // Add custom implementation, as needed.
+        // ThenPush.me: Send the device to personal backend
         DeviceSender sender = DeviceSender.getInstance(getApplicationContext());
         Device device = new Device(token);
         sender.send(device, new Callback<Device>() {
