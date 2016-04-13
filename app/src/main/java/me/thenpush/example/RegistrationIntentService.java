@@ -95,7 +95,7 @@ public class RegistrationIntentService extends IntentService {
         // Add custom implementation, as needed.
         DeviceSender sender = DeviceSender.getInstance(getApplicationContext());
         Device device = new Device(token);
-        sender.send(device, "fc0f72f2-00e2-11e6-ba10-0242ac110005", new Callback<Device>() {
+        sender.send(device, new Callback<Device>() {
             @Override
             public void onResponse(Call<Device> call, Response<Device> response) {
                 Log.d("example", "Device received: " + response.body());

@@ -11,8 +11,7 @@ import retrofit2.http.Path;
  * Created by pappacena on 12/04/16.
  */
 public interface Endpoints {
-    @POST("/projects/{project_id}/devices")
-    Call<Device> addDevice(@Header("Authorization") String token,
-                           @Path("project_id") String projectId,
+    @POST("/api/v1/projects/{project_id}/devices")
+    Call<Device> addDevice(@Path("project_id") String projectId,
                            @Body Device device);
 }
