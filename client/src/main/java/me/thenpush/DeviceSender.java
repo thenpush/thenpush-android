@@ -1,7 +1,6 @@
 package me.thenpush;
 
 import android.content.Context;
-import android.util.Log;
 
 import me.thenpush.rest.Endpoints;
 import me.thenpush.rest.RestApi;
@@ -28,6 +27,10 @@ public class DeviceSender {
         return DeviceSender.instance;
     }
 
+    public void send(Device device) {
+        this.send(device, null);
+    }
+
     public void send(Device device, Callback<Device> callback) {
         Retrofit retrofit = RestApi.getInstance(this.context).getRetrofit();
         Endpoints endpoints = retrofit.create(Endpoints.class);
@@ -38,6 +41,9 @@ public class DeviceSender {
         if(token == null || projectId == null) {
             return;
         }
+
+        SettingsManager manager = SettingsManager.getInstance(this.context);
+        manager.setRegistrationId(device.getRegistrationId());
 
         Call<Device> call = endpoints.addDevice(projectId, device);
         call.enqueue(callback);

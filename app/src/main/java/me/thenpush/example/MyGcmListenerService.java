@@ -29,6 +29,10 @@ import android.util.Log;
 import com.google.android.gms.gcm.GcmListenerService;
 
 import me.thenpush.PushReceiver;
+import me.thenpush.rest.models.PushReceipt;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MyGcmListenerService extends GcmListenerService {
 
@@ -45,7 +49,19 @@ public class MyGcmListenerService extends GcmListenerService {
     @Override
     public void onMessageReceived(String from, Bundle data) {
         // ThenPush.me: Notify that the push was received
-        PushReceiver.getInstance(getApplicationContext()).notifyReceipt(from, data);
+        // The latest parameter (callback) is optional
+        PushReceiver.getInstance(getApplicationContext()).notifyReceipt(from, data, new Callback<PushReceipt>() {
+            @Override
+            public void onResponse(Call<PushReceipt> call, Response<PushReceipt> response) {
+                Log.d("thenpush.me", "Push receipt notification sent." + response.body());
+            }
+
+            @Override
+            public void onFailure(Call<PushReceipt> call, Throwable t) {
+                Log.d("thenpush.me", "Problem sending push receipt notification");
+                t.printStackTrace();
+            }
+        });
 
         String message = data.getString("message");
         Log.d(TAG, "From: " + from);

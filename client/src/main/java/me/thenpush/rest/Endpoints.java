@@ -1,6 +1,7 @@
 package me.thenpush.rest;
 
 import me.thenpush.rest.models.Device;
+import me.thenpush.rest.models.PushReceipt;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Header;
@@ -14,4 +15,7 @@ public interface Endpoints {
     @POST("/api/v1/projects/{project_id}/devices")
     Call<Device> addDevice(@Path("project_id") String projectId,
                            @Body Device device);
+
+    @POST("/api/v1/receive")
+    Call<PushReceipt> notifyReceipt(@Body PushReceipt pushReceipt);
 }

@@ -2,6 +2,14 @@ package me.thenpush;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
+
+import me.thenpush.rest.Endpoints;
+import me.thenpush.rest.RestApi;
+import me.thenpush.rest.models.PushReceipt;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Retrofit;
 
 /**
  * Created by pappacena on 13/04/16.
@@ -23,6 +31,30 @@ public class PushReceiver {
     }
 
     public void notifyReceipt(String from, Bundle data) {
-        // TODO
+        this.notifyReceipt(from, data, null);
+    }
+
+    public void notifyReceipt(String from, Bundle data, Callback<PushReceipt> callback) {
+        Retrofit retrofit = RestApi.getInstance(this.context).getRetrofit();
+        Endpoints endpoints = retrofit.create(Endpoints.class);
+
+        // Get uuid from Bundle, and device registration ID
+        SettingsManager manager = SettingsManager.getInstance(this.context);
+        String uuid = data.getString("thenpush_uuid");
+        String registrationId = manager.getRegistrationId();
+
+        if(uuid == null) {
+            Log.e("thenpush.me", "ThenPush.me uuid not found. Was this push sent using thenpush.me? " + uuid);
+            return;
+        }
+
+        if(registrationId == null) {
+            return;
+        }
+
+        // send it
+        PushReceipt pushReceipt = new PushReceipt(uuid, registrationId);
+        Call<PushReceipt> call = endpoints.notifyReceipt(pushReceipt);
+        call.enqueue(callback);
     }
 }
