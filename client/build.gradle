@@ -1,5 +1,29 @@
 apply plugin: 'com.android.library'
 
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'thenpush.me-client'
+
+    publishedGroupId = 'thenpush.me-client'
+    libraryName = 'ThenPush.me Client'
+    artifact = 'client'
+
+    libraryDescription = 'Library to connect Android projects with thenpush.me service'
+
+    siteUrl = 'https://github.com/thenpush/thenpush-android'
+    gitUrl = 'https://github.com/thenpush/thenpush-android.git'
+
+    libraryVersion = '0.1.0'
+
+    developerId = 'thenpush.me'
+    developerName = 'Thiago F. Pappacena'
+    developerEmail = 'pappacena@gmail.com'
+
+    licenseName = 'MIT'
+    licenseUrl = 'https://opensource.org/licenses/MIT'
+    allLicenses = ["MIT"]
+}
+
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.2"
@@ -28,3 +52,6 @@ dependencies {
     compile 'com.squareup.retrofit2:converter-gson:2.0.1'
     compile 'com.squareup.okhttp3:okhttp:3.2.0'
 }
+
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
