@@ -35,6 +35,23 @@ Device device = new Device(token);
 sender.send(device);
 ```
 
+To make it easier to find your users, you can associate a list of tags, or a hashmap of attributes to the Device:
+
+```
+// build the device object with tags and data
+// tags = ["tag1", "tag2", "tag3"]
+// data = {"age": 15, "name": "John Doe"}
+String [] tags = new String[]{"tag1", "tag2", "tag3"};
+HashMap data = new HashMap();
+data.put("age", 15);
+data.put("name", "John Doe");
+Device device = new Device(token, tags, data);
+
+// Send the device object
+DeviceSender sender = DeviceSender.getInstance(getApplicationContext());
+sender.send(device);
+```
+
 # Marking a push as received
 
 Once you receive a push sent trough thenpush.me service, you can mark it as received by doing:

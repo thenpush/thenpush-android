@@ -28,6 +28,7 @@ import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.google.android.gms.iid.InstanceID;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 import me.thenpush.DeviceSender;
 import me.thenpush.rest.models.Device;
@@ -93,12 +94,22 @@ public class RegistrationIntentService extends IntentService {
      */
     private void sendRegistrationToServer(String token) {
         // ThenPush.me: Send the device to personal backend
+
+        // build the device object with tags and data
+        // tags = ["tag1", "tag2", "tag3"]
+        // data = {"age": 15, "name": "John Doe"}
+        String [] tags = new String[]{"tag1", "tag2", "tag3"};
+        HashMap data = new HashMap();
+        data.put("age", 15);
+        data.put("name", "John Doe");
+        Device device = new Device(token, tags, data);
+
+        // Send the device object
         DeviceSender sender = DeviceSender.getInstance(getApplicationContext());
-        Device device = new Device(token);
         sender.send(device, new Callback<Device>() {
             @Override
             public void onResponse(Call<Device> call, Response<Device> response) {
-                Log.d("example", "Device received: " + response.body());
+                Log.d("example", "Device received: " + response.body() + " / debug = " + BuildConfig.DEBUG);
             }
 
             @Override
