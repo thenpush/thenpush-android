@@ -7,6 +7,7 @@ import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
 
+import me.thenpush.BuildConfig;
 import me.thenpush.ConfigFetcher;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -19,8 +20,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by pappacena on 12/04/16.
  */
 public class RestApi {
-    // public static final String BASE_URL = "https://thenpush.me/api/v1/";
-    public static final String BASE_URL = "http://192.168.1.11:8000/";
+    public static final String BASE_URL = BuildConfig.DEBUG? "http://192.168.1.46:8000/" : "https://thenpush.me/api/v1/";
     private Context context;
     private static RestApi instance;
     private Retrofit retrofit;

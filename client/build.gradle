@@ -2,9 +2,9 @@ apply plugin: 'com.android.library'
 
 ext {
     bintrayRepo = 'maven'
-    bintrayName = 'thenpush.me-client'
+    bintrayName = 'thenpush.me'
 
-    publishedGroupId = 'thenpush.me-client'
+    publishedGroupId = 'thenpush.me'
     libraryName = 'ThenPush.me Client'
     artifact = 'client'
 
@@ -13,7 +13,7 @@ ext {
     siteUrl = 'https://github.com/thenpush/thenpush-android'
     gitUrl = 'https://github.com/thenpush/thenpush-android.git'
 
-    libraryVersion = '0.1.0'
+    libraryVersion = '0.1.1'
 
     developerId = 'thenpush.me'
     developerName = 'Thiago F. Pappacena'
