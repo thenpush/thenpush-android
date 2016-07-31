@@ -8,7 +8,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:631642900304:android:700dd2616f176b0f",
         "android_client_info": {
-          "package_name": "me.thenpush.example"
+          "package_name": "me.thenpush"
         }
       },
       "oauth_client": [],

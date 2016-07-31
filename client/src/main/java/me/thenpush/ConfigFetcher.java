@@ -18,17 +18,4 @@ public class ConfigFetcher {
         }
         return "Token " + token;
     }
-
-    public static String getProjectId(Context context) {
-        String projectId = context.getString(R.string.thenpushme_project_id);
-
-        if (projectId.trim().length() == 0) {
-            String msg = "String thenpushme_project_id not set.\n"
-                    + "ThenPush.me services will not work until you add your project ID.\n"
-                    + "You can find it at https://thenpush.me";
-            Log.e("thenpush.me", msg);
-            return null;
-        }
-        return projectId;
-    }
 }

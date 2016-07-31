@@ -44,7 +44,7 @@ public class PushReceiver {
         String registrationId = manager.getRegistrationId();
 
         if(uuid == null) {
-            Log.e("thenpush.me", "ThenPush.me uuid not found. Was this push sent using thenpush.me? " + uuid);
+            Log.e("thenpush.me", "ThenPush.me token not found. Was this push sent using thenpush.me? " + uuid);
             return;
         }
 

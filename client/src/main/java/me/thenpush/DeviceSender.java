@@ -7,6 +7,7 @@ import me.thenpush.rest.RestApi;
 import me.thenpush.rest.models.Device;
 import retrofit2.Call;
 import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 
 /**
@@ -28,7 +29,17 @@ public class DeviceSender {
     }
 
     public void send(Device device) {
-        this.send(device, null);
+        this.send(device, new Callback<Device>() {
+            @Override
+            public void onResponse(Call<Device> call, Response<Device> response) {
+                // pass
+            }
+
+            @Override
+            public void onFailure(Call<Device> call, Throwable t) {
+                // pass
+            }
+        });
     }
 
     public void send(Device device, Callback<Device> callback) {
@@ -36,16 +47,15 @@ public class DeviceSender {
         Endpoints endpoints = retrofit.create(Endpoints.class);
 
         String token = ConfigFetcher.getToken(context);
-        String projectId = ConfigFetcher.getProjectId(context);
 
-        if(token == null || projectId == null) {
+        if(token == null) {
             return;
         }
 
         SettingsManager manager = SettingsManager.getInstance(this.context);
         manager.setRegistrationId(device.getRegistrationId());
 
-        Call<Device> call = endpoints.addDevice(projectId, device);
+        Call<Device> call = endpoints.addDevice(device);
         call.enqueue(callback);
     }
 }

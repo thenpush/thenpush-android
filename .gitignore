@@ -39,3 +39,7 @@ proguard/
 
 # Android Studio captures folder
 captures/
+
+
+# pappacena
+send_push.sh
