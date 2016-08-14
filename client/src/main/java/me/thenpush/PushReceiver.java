@@ -4,6 +4,9 @@ import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import me.thenpush.rest.Endpoints;
 import me.thenpush.rest.RestApi;
 import me.thenpush.rest.models.PushReceipt;
@@ -30,17 +33,17 @@ public class PushReceiver {
         return PushReceiver.instance;
     }
 
-    public void notifyReceipt(String from, Bundle data) {
+    public void notifyReceipt(String from, Map<String, String> data) {
         this.notifyReceipt(from, data, null);
     }
 
-    public void notifyReceipt(String from, Bundle data, Callback<PushReceipt> callback) {
+    public void notifyReceipt(String from, Map<String, String> data, Callback<PushReceipt> callback) {
         Retrofit retrofit = RestApi.getInstance(this.context).getRetrofit();
         Endpoints endpoints = retrofit.create(Endpoints.class);
 
         // Get uuid from Bundle, and device registration ID
         SettingsManager manager = SettingsManager.getInstance(this.context);
-        String uuid = data.getString("thenpush_uuid");
+        String uuid = data.get("thenpush_uuid");
         String registrationId = manager.getRegistrationId();
 
         if(uuid == null) {

@@ -10,7 +10,7 @@
         <activity
             android:name="me.thenpush.iamessage.MessageViewer">
             <intent-filter>
-                <action android:name="IN_APP_MESSAGE" />
+                <action android:name="THEN_PUSH_IN_APP_MESSAGE" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

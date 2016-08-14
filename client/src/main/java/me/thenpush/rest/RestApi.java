@@ -32,7 +32,7 @@ public class RestApi {
         String url = BASE_URL;
         try {
             if((boolean) Class.forName(context.getPackageName() + ".BuildConfig").getField("DEBUG").get(null)) {
-                url = "http://192.168.1.46:8000/";
+                url = "http://192.168.1.7:8000/";
             }
         } catch (ClassNotFoundException e) {
         } catch (NoSuchFieldException e) {
