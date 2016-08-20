@@ -1,6 +1,5 @@
 <resources>
-    <string name="thenpushme_api_token">8fcd9d15521151e8e25e271277451005fe6b8e80</string>
-    <string name="thenpushme_project_id">db55e907-8fb2-4ed9-97c6-58f2e33d4433</string>
+    <string name="thenpushme_api_token">001f68bb-5ded-4616-ab24-da5c7b99892b</string>
 
     <string name="app_name">ThenPush GCM Quickstart</string>
     <string name="gcm_send_message">Token retrieved and sent to thenpush.me! You can now use http://thenpush.me console

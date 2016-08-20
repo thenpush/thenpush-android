@@ -55,7 +55,14 @@ public class DeviceSender {
         SettingsManager manager = SettingsManager.getInstance(this.context);
         manager.setRegistrationId(device.getRegistrationId());
 
-        Call<Device> call = endpoints.addDevice(device);
-        call.enqueue(callback);
+
+        String deviceId = manager.getDeviceId();
+        if (deviceId == null || deviceId.length() == 0) {
+            Call<Device> call = endpoints.addDevice(device);
+            call.enqueue(callback);
+        } else {
+            Call<Device> call = endpoints.addDevice(deviceId, device);
+            call.enqueue(callback);
+        }
     }
 }

@@ -3,6 +3,7 @@ package me.thenpush.iamessage;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
@@ -29,6 +30,7 @@ public class MessageViewer extends Activity {
         Intent intent = getIntent();
         String url = intent.getExtras().getString("url");
 
+        Log.d("thenpush.me", "Opening url " + url);
         webview.getSettings().setLoadsImagesAutomatically(true);
         webview.getSettings().setJavaScriptEnabled(true);
         webview.getSettings().setDomStorageEnabled(true);

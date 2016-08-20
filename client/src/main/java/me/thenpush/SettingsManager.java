@@ -47,8 +47,38 @@ public class SettingsManager {
         return registrationId;
     }
 
+    public void setDeviceId(String deviceId) {
+        this.setString("deviceId", deviceId);
+    }
+
+    public String getDeviceId() {
+        String deviceId = this.getString("deviceId", null);
+        if(deviceId == null) {
+            Log.e("thenpush.me", "Trying to get deviceId before assignment on backend");
+        }
+        return deviceId;
+    }
+
     private String getString(String key, String defaultValue) {
         return this.getSharedPreferences().getString(key, defaultValue);
+    }
+
+    public synchronized void addPendingFlow(String flowId) {
+        String current = this.getString("pending_flows", "");
+        String newPending = current;
+        if (current.length() != 0) {
+            newPending += ";";
+        }
+        newPending += flowId;
+        this.setString("pending_flows", newPending);
+    }
+
+    public synchronized void clearPendingFlows() {
+        this.setString("pending_flows", null);
+    }
+
+    public synchronized String[] getPendingFlows() {
+        return this.getString("pending_flows", "").split(";");
     }
 
     private void setString(String key, String value) {

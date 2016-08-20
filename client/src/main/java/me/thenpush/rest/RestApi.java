@@ -1,6 +1,7 @@
 package me.thenpush.rest;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -38,6 +39,7 @@ public class RestApi {
         } catch (NoSuchFieldException e) {
         } catch (IllegalAccessException e) {
         }
+        Log.d("thenpush.me", "Using thenpush.me server " + url);
 
         Gson gson = new GsonBuilder()
                 .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")

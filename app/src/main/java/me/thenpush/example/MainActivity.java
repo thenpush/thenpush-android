@@ -32,12 +32,19 @@ import android.widget.TextView;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 
+import me.thenpush.Flow;
+
 public class MainActivity extends AppCompatActivity {
+    private TextView messageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        this.messageView = (TextView) findViewById(R.id.message);
+
+        Flow.getInstance(this, "b5d304b0-5878-4bdf-850e-cd2987347b9e").start();
     }
 
 }

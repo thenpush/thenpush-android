@@ -8,6 +8,7 @@ import java.util.HashMap;
  * Created by pappacena on 12/04/16.
  */
 public class Device {
+    private String id;
     @SerializedName("registration_id")
     private String registrationId;
     private HashMap data;
@@ -17,6 +18,14 @@ public class Device {
         this.registrationId = registrationId;
         this.tags = tags;
         this.data = data;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public Device(String registrationId) {
